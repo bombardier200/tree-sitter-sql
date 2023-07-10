@@ -519,11 +519,19 @@
           "named": true
         },
         {
+          "type": "cte",
+          "named": true
+        },
+        {
           "type": "exists",
           "named": true
         },
         {
           "type": "field",
+          "named": true
+        },
+        {
+          "type": "from",
           "named": true
         },
         {
@@ -539,6 +547,10 @@
           "named": true
         },
         {
+          "type": "keyword_with",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -548,6 +560,14 @@
         },
         {
           "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "select",
+          "named": true
+        },
+        {
+          "type": "set_operation",
           "named": true
         },
         {
@@ -1028,6 +1048,14 @@
             "named": false
           },
           {
+            "type": "#>",
+            "named": false
+          },
+          {
+            "type": "#>>",
+            "named": false
+          },
+          {
             "type": "%",
             "named": false
           },
@@ -1041,6 +1069,14 @@
           },
           {
             "type": "-",
+            "named": false
+          },
+          {
+            "type": "->",
+            "named": false
+          },
+          {
+            "type": "->>",
             "named": false
           },
           {
@@ -1105,6 +1141,10 @@
           },
           {
             "type": "not_distinct_from",
+            "named": true
+          },
+          {
+            "type": "not_in",
             "named": true
           },
           {
@@ -2666,27 +2706,15 @@
           "named": true
         },
         {
-          "type": "keyword_all",
-          "named": true
-        },
-        {
-          "type": "keyword_except",
-          "named": true
-        },
-        {
-          "type": "keyword_intersect",
-          "named": true
-        },
-        {
-          "type": "keyword_union",
-          "named": true
-        },
-        {
           "type": "keyword_with",
           "named": true
         },
         {
           "type": "select",
+          "named": true
+        },
+        {
+          "type": "set_operation",
           "named": true
         }
       ]
@@ -2713,19 +2741,11 @@
           "named": true
         },
         {
-          "type": "keyword_all",
-          "named": true
-        },
-        {
           "type": "keyword_as",
           "named": true
         },
         {
           "type": "keyword_create",
-          "named": true
-        },
-        {
-          "type": "keyword_except",
           "named": true
         },
         {
@@ -2738,10 +2758,6 @@
         },
         {
           "type": "keyword_if",
-          "named": true
-        },
-        {
-          "type": "keyword_intersect",
           "named": true
         },
         {
@@ -2762,10 +2778,6 @@
         },
         {
           "type": "keyword_temporary",
-          "named": true
-        },
-        {
-          "type": "keyword_union",
           "named": true
         },
         {
@@ -3855,9 +3867,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "keyword_language",
+          "named": true
+        },
         {
           "type": "keyword_plpgsql",
           "named": true
@@ -4169,10 +4185,6 @@
           "named": true
         },
         {
-          "type": "keyword_all",
-          "named": true
-        },
-        {
           "type": "keyword_as",
           "named": true
         },
@@ -4189,10 +4201,6 @@
           "named": true
         },
         {
-          "type": "keyword_except",
-          "named": true
-        },
-        {
           "type": "keyword_high_priority",
           "named": true
         },
@@ -4202,10 +4210,6 @@
         },
         {
           "type": "keyword_insert",
-          "named": true
-        },
-        {
-          "type": "keyword_intersect",
           "named": true
         },
         {
@@ -4234,10 +4238,6 @@
         },
         {
           "type": "keyword_set",
-          "named": true
-        },
-        {
-          "type": "keyword_union",
           "named": true
         },
         {
@@ -5009,6 +5009,25 @@
     }
   },
   {
+    "type": "not_in",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword_in",
+          "named": true
+        },
+        {
+          "type": "keyword_not",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "not_like",
     "named": true,
     "fields": {},
@@ -5612,6 +5631,48 @@
     }
   },
   {
+    "type": "set_operation",
+    "named": true,
+    "fields": {
+      "operation": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "keyword_all",
+            "named": true
+          },
+          {
+            "type": "keyword_except",
+            "named": true
+          },
+          {
+            "type": "keyword_intersect",
+            "named": true
+          },
+          {
+            "type": "keyword_union",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "from",
+          "named": true
+        },
+        {
+          "type": "select",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "set_schema",
     "named": true,
     "fields": {
@@ -5774,10 +5835,6 @@
           "named": true
         },
         {
-          "type": "keyword_all",
-          "named": true
-        },
-        {
           "type": "keyword_analyze",
           "named": true
         },
@@ -5802,10 +5859,6 @@
           "named": true
         },
         {
-          "type": "keyword_except",
-          "named": true
-        },
-        {
           "type": "keyword_exists",
           "named": true
         },
@@ -5827,10 +5880,6 @@
         },
         {
           "type": "keyword_incremental",
-          "named": true
-        },
-        {
-          "type": "keyword_intersect",
           "named": true
         },
         {
@@ -5894,10 +5943,6 @@
           "named": true
         },
         {
-          "type": "keyword_union",
-          "named": true
-        },
-        {
           "type": "keyword_using",
           "named": true
         },
@@ -5923,6 +5968,10 @@
         },
         {
           "type": "select",
+          "named": true
+        },
+        {
+          "type": "set_operation",
           "named": true
         },
         {
@@ -6837,6 +6886,14 @@
     "named": false
   },
   {
+    "type": "#>",
+    "named": false
+  },
+  {
+    "type": "#>>",
+    "named": false
+  },
+  {
     "type": "$",
     "named": false
   },
@@ -6886,6 +6943,14 @@
   },
   {
     "type": "--",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": "->>",
     "named": false
   },
   {
@@ -7462,6 +7527,10 @@
   },
   {
     "type": "keyword_key",
+    "named": true
+  },
+  {
+    "type": "keyword_language",
     "named": true
   },
   {
